@@ -540,30 +540,62 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 border-t border-slate-900">
+  <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/40 relative">
     <div class="max-w-md mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-          Support & Inquiries
+      <div class="text-center mb-10">
+        <h2 class="font-display text-3xl font-black text-white tracking-tight">
+          Get in Touch
         </h2>
-        <p class="text-slate-400 text-xs mt-2">
-          Need help with your Play Store account integration or Google Drive API permissions?
+        <p class="text-slate-400 text-sm mt-2">
+          Have questions regarding our Google Drive OAuth authorization or API compliance? Connect with the development team directly.
         </p>
       </div>
 
-      <form onsubmit="handleDemoContactSubmit(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Email Address</label>
-          <input type="email" required placeholder="name@domain.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500">
+      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 lg:p-8 shadow-xl text-center">
+        <div class="w-12 h-12 bg-blue-600/10 border border-blue-500/20 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-5">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Message Inquiry</label>
-          <textarea required rows="4" placeholder="How can we help you organize your document pipeline?" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+
+        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Official Developer Support</span>
+        <p class="text-xl font-bold font-mono text-white tracking-tight mb-4 select-all">
+          supportatcosmoscode@gmail.com
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="bg-slate-950/40 border border-slate-800/80 p-3 rounded-xl text-left">
+            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">Response Time</span>
+            <span class="text-xs font-bold text-white mt-0.5 block">Under 12 Hours</span>
+          </div>
+          <div class="bg-slate-950/40 border border-slate-800/80 p-3 rounded-xl text-left">
+            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">API Compliance</span>
+            <span class="text-xs font-bold text-blue-400 mt-0.5 block">100% Verified</span>
+          </div>
         </div>
-        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs tracking-wide transition-all shadow-md shadow-blue-500/20">
-          Send Secure Inquiry
-        </button>
-      </form>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button
+            onclick="copyEmailAddress(this)"
+            class="flex-1 py-3 px-4 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="btn-text">Copy Email</span>
+          </button>
+
+          <a
+            href="mailto:supportatcosmoscode@gmail.com"
+            class="flex-1 py-3 px-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Email Directly</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -724,10 +756,16 @@ NovaDocs AI is a product of Cosmos Code.";
       alert("Privacy Policy copied to clipboard!");
     }
 
-    function handleDemoContactSubmit(e) {
-      e.preventDefault();
-      alert("Message logged! Thank you for contacting NovaDocs AI support.");
-      e.target.reset();
+    function copyEmailAddress(btn) {
+      navigator.clipboard.writeText("supportatcosmoscode@gmail.com");
+      const textSpan = btn.querySelector('.btn-text');
+      const originalText = textSpan.innerText;
+      textSpan.innerText = "Copied Address";
+      btn.classList.add('border-emerald-500/50', 'text-emerald-400');
+      setTimeout(() => {
+        textSpan.innerText = originalText;
+        btn.classList.remove('border-emerald-500/50', 'text-emerald-400');
+      }, 2000);
     }
   </script>
 </body>
